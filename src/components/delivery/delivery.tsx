@@ -4,7 +4,6 @@ import fast from "../../../public/images/fast.png";
 import fast1 from "../../../public/images/fast_delivery_2.png";
 import fast2 from "../../../public/images/fast_delivery_3.png";
 import fast3 from "../../../public/images/fast_delivery_4.png";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -59,7 +58,7 @@ const Delivery = () => {
             {items.map((item) => {
               return (
                 <SwiperSlide key={item.label}>
-                  <Image class="w-full" src={item.srcImg} alt="" />
+                  <Image class="w-full" src={item.srcImg} alt="" width="100" />
                 </SwiperSlide>
               );
             })}
