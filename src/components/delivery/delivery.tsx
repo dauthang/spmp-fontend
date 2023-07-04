@@ -58,7 +58,7 @@ const Delivery = () => {
             {items.map((item) => {
               return (
                 <SwiperSlide key={item.label}>
-                  <Image class="w-full" src={item.srcImg} alt="" width="100" />
+                  <Image className="w-full" src={item.srcImg} alt="" />
                 </SwiperSlide>
               );
             })}
