@@ -1,4 +1,4 @@
-import ListCard from "@/components/ListCard/list-card";
+import ListCard from "@/components/list-card/list-card";
 import Layout from "../layout";
 
 const Product = () => {
