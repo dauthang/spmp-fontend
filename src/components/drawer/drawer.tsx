@@ -25,7 +25,7 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, id }) => {
             (isOpen ? " translate-x-0 " : " translate-x-full ")
           }
         >
-          <article className="relative w-screen max-w-lg pb-10 flex flex-col space-y-6 h-full  overflow-scroll-y">
+          <article className="relative w-screen max-w-lg pb-10 flex flex-col space-y-6 h-full overflow-scroll-y overflow-y-auto">
             <div className="w-full flex justify-center relative px-[30px] py-[20px]">
               <button className="w-auto h-10 flex items-center justify-center text-gray-500 absolute top-half left-[30px] transition duration-300 focus:outline-none hover:text-gray-900">
                 <Image
@@ -38,10 +38,10 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, id }) => {
               </button>
               <h2 className="font-bold text-p24px] m-0">Details</h2>
             </div>
-            <div className="flex items-center justify-center w-full h-360px overflow-hidden rounded mb-[30px]">
-              <Image src={ImageExam} width={390} height={390} alt="" />
+            <div className="flex items-center justify-center w-full h-[360px] rounded mb-[30px] p-8">
+              <Image className="w-[100%] mt-5" src={ImageExam} alt="" />
             </div>
-            <div className="flex flex-col p-[30px] pt-0">
+            <div className="flex flex-col p-[30px] pt-8">
               <div className="flex flex-col items-start mb-4">
                 <span className="text-gray-900 font-semibold mb-2">$0.1</span>
                 <span className="mb-3">Sergical Mask</span>
