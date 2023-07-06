@@ -9,6 +9,7 @@ import ImageBackground from "@/components/image-background/image-background";
 import BackgroundLoading from "@/components/background-loading/background-loading";
 import { useEffect, useState } from "react";
 import BackgroundClassic from "@/components/background-classic/background-classic";
+import ListCardClassic from "@/components/list-card-classic/card-classic";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -35,6 +36,7 @@ export default function RootLayout({
                 {/* <Delivery /> */}
                 <BackgroundClassic />
                 <Order />
+                <ListCardClassic />
                 <div>{children}</div>
                 <ImageBackground />
               </div>
