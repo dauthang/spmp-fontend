@@ -11,7 +11,7 @@ export interface ImgProduct {
 }
 const ListCardClassic = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [imgDetail, setImgDetail] = useState<ImgProduct>();
+  const [imgDetail, setImgDetail] = useState<ImgProduct | undefined>();
   const [listImg, setListImg] = useState<ImgProduct[]>([]);
   const SRC_BASE = "/images/product/change-bg/";
   const SRC_REMOVE = "/images/product/sanpham/";
