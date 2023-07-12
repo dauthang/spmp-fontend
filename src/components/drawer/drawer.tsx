@@ -7,7 +7,7 @@ import { ImgProduct } from "../list-card-classic/card-classic";
 export interface Props {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  img: ImgProduct | undefined;
+  img?: ImgProduct | undefined;
 }
 const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, img }: Props) => {
   return (
