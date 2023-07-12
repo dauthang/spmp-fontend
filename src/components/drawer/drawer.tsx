@@ -42,7 +42,9 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, img }: Props) => {
               <h2 className="font-bold text-[24px] m-0">Details</h2>
             </div>
             <div className="flex items-center justify-center w-full h-[360px] rounded mb-[30px] p-8">
-              <Image className="w-[100%] mt-5" src={img?.srcImg} alt="" />
+              {img && img.srcImg && (
+                <Image className="w-[100%] mt-5" src={img.srcImg} alt="" />
+              )}
             </div>
             <div className="flex flex-col p-[30px] pt-8">
               <div className="flex flex-col items-start mb-4">
