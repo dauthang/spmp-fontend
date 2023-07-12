@@ -160,7 +160,7 @@ const ListCardClassic = () => {
         })}
       </div>
       {setIsOpen && (
-        <Drawer isOpen={isOpen} setIsOpen={setIsOpen} id={0} img={imgDetail} />
+        <Drawer isOpen={isOpen} setIsOpen={setIsOpen} img={imgDetail} />
       )}
     </div>
   );
