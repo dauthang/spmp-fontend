@@ -57,7 +57,7 @@ const DrawerLeft: NextPage<Props> = ({ isOpen, setIsOpen }: Props) => {
             </div>
             <div className="flex flex-col py-[60px] pb-[40px] lg:pb-[60px]">
               <a className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900 font-semibold active">
-                <Link href="/"> Giới Thiệu</Link>
+                <Link href="/home"> Giới Thiệu</Link>
               </a>
               <a
                 className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900"

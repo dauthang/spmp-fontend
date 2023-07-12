@@ -8,7 +8,6 @@ import Layout from "../layout";
 const Product = () => {
   return (
     <div>
-      <BackgroundClassic />
       <Order />
       <ListCardClassic />
       <ImageBackground />
