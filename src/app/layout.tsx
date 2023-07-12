@@ -34,11 +34,8 @@ export default function RootLayout({
             <div className="flex flex-col w-full h-full min-h-screen flex-grow">
               <div className="pt-[90px] px-3 pb-[50px] flex-auto md:px-[35px]">
                 {/* <Delivery /> */}
-                <BackgroundClassic />
-                <Order />
-                <ListCardClassic />
+
                 <div>{children}</div>
-                <ImageBackground />
               </div>
               <Footer />
             </div>

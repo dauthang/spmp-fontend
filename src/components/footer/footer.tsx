@@ -12,7 +12,11 @@ const Footer = () => {
         All rights reserved
       </p>
       <div className="items-center hidden lg:flex">
-        <a href="/" className="social facebook" target="_blank">
+        <a
+          href="https://www.facebook.com/LuonCoKySuTuVanTrucTiep"
+          className="social facebook"
+          target="_blank"
+        >
           <span className="sr-only">facebook</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
