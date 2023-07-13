@@ -1,4 +1,5 @@
 "use client";
+import { DataProduct, DATA_PRODUCT } from "@/constants/data-product.const";
 import Image, { StaticImageData } from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import Drawer from "../drawer/drawer";
@@ -7,7 +8,7 @@ export interface ImgProduct {
   id: number;
   srcImg: StaticImageData;
   srcImgRemoveBg: StaticImageData;
-  name: string;
+  data: DataProduct;
 }
 const ListCardClassic = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,43 +17,18 @@ const ListCardClassic = () => {
   const SRC_BASE = "/images/product/change-bg/";
   const SRC_REMOVE = "/images/product/sanpham/";
   useEffect(() => {
+    console.log(DATA_PRODUCT.length);
     let listImg: ImgProduct[] = [];
     let id = 3;
     let count = 1;
-    let NAME_PRODUCT: string[] = [
-      "MP NANO",
-      "BIO MAX",
-      "MP BIO CLEAR",
-      "BIOPOLD",
-      "NANO ZIM",
-      "BIO RHODO",
-      "MP HEPATICS",
-      "LIVER AQUA",
-      "NEW OGANIC",
-      "MP ECOZYME",
-      "BIO ACMIN",
-      "ACID OGANIC",
-      "",
-      "",
-      "MP LACTO",
-      "CANXI SUPER",
-      "CANXI P",
-      "PROMIX 10",
-      "SODAMIX ONE",
-      "EDTA VM",
-      "YUCCA C",
-      "C TẠT",
-      "OXY GEN",
-      "ZEO VS",
-      "BKC",
-      "IODINE",
-      "WNV8",
-      "WIN MAX",
-      "WIN KONG",
-      "VIRUS STOP",
-    ];
-    for (let i = 1; i <= 30; i++) {
-      if (i === 13 || i === 14) {
+
+    for (let i = 1; i <= 32; i++) {
+      if (i === 13) {
+        count = 2;
+        continue;
+      }
+
+      if (i === 14) {
         count = 1;
         id++;
         continue;
@@ -70,7 +46,7 @@ const ListCardClassic = () => {
             width: 138,
             height: 138,
           },
-          name: NAME_PRODUCT[i - 1],
+          data: DATA_PRODUCT[i - 1],
         });
         count = 2;
       } else {
@@ -86,7 +62,7 @@ const ListCardClassic = () => {
             width: 138,
             height: 138,
           },
-          name: NAME_PRODUCT[i - 1],
+          data: DATA_PRODUCT[i - 1],
         });
         count = 1;
         id++;
@@ -123,7 +99,7 @@ const ListCardClassic = () => {
                 </div>
                 <div className="flex flex-col w-full items-start overflow-hidden">
                   <span className="font-semibold text-gray-900 mb-1 text-[16px]">
-                    {item.name}
+                    {item.data.nameProduct}
                   </span>
                   <span className="text-[13px] text-gray-700 truncate w-full">
                     Trueplus Fibre Food Supplement 90 Tablets
@@ -160,7 +136,7 @@ const ListCardClassic = () => {
         })}
       </div>
       {setIsOpen && (
-        <Drawer isOpen={isOpen} setIsOpen={setIsOpen} img={imgDetail} />
+        <Drawer isOpen={isOpen} setIsOpen={setIsOpen} detail={imgDetail} />
       )}
     </div>
   );

@@ -19,7 +19,7 @@ const ListCard = () => {
         })}
       </div>
       <div></div>
-      <Drawer isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <Drawer isOpen={isOpen} setIsOpen={setIsOpen} /> */}
     </div>
   );
 };
