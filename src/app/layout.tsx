@@ -3,13 +3,9 @@ import Header from "@/components/header/header";
 import "./globals.scss";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer/footer";
-import Order from "@/components/order/order";
-import Delivery from "@/components/delivery/delivery";
-import ImageBackground from "@/components/image-background/image-background";
 import BackgroundLoading from "@/components/background-loading/background-loading";
 import { useEffect, useState } from "react";
-import BackgroundClassic from "@/components/background-classic/background-classic";
-import ListCardClassic from "@/components/list-card-classic/card-classic";
+import { useRouter } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -18,8 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
+      router.push("/home");
       setIsLoading(false);
     }, 2800);
   }, []);
@@ -34,11 +32,7 @@ export default function RootLayout({
             <div className="flex flex-col w-full h-full min-h-screen flex-grow">
               <div className="pt-[90px] px-3 pb-[50px] flex-auto md:px-[35px]">
                 {/* <Delivery /> */}
-                <BackgroundClassic />
-                <Order />
-                <ListCardClassic />
                 <div>{children}</div>
-                <ImageBackground />
               </div>
               <Footer />
             </div>

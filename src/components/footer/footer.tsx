@@ -2,17 +2,20 @@ const Footer = () => {
   return (
     <div className="w-full flex items-center justify-center bg-white shadow-footer px-4 py-[30px] lg:px-[35px] lg:justify-between">
       <p className="text-gray-900">
-        Copyright © 2023{" "}
-        <a
-          className="font-semibold transition-colors duration-200 ease-in-out hover:text-red-700"
-          href="https://redq.io/"
-        >
-          RedQ, Inc.
-        </a>{" "}
-        All rights reserved
+        <span className="flex flex-row">
+          <strong>Địa chỉ: </strong> Lầu 10, 161-163 Trần Quốc Thảo, Phường 09,
+          Quận 03, Thành phố Hồ Chí Minh
+        </span>
+        <span>
+          <strong>Hotline:</strong> 0949.509.8888
+        </span>
       </p>
       <div className="items-center hidden lg:flex">
-        <a href="/" className="social facebook" target="_blank">
+        <a
+          href="https://www.facebook.com/LuonCoKySuTuVanTrucTiep"
+          className="social facebook"
+          target="_blank"
+        >
           <span className="sr-only">facebook</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
