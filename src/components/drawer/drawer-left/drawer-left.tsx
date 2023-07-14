@@ -3,32 +3,42 @@ import React, { useCallback, useEffect, useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 export interface Props {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const DrawerLeft: NextPage<Props> = ({ isOpen, setIsOpen }: Props) => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const router = useRouter();
+  const itemNav = [
+    {
+      href: "/",
+      name: "Giới Thiệu",
+    },
+    {
+      href: "/product",
+      name: "Sản phẩm",
+    },
+    {
+      href: "/",
+      name: "Thông tin kĩ thuật",
+    },
 
+    {
+      href: "/",
+      name: "Liên hệ",
+    },
+  ];
   useEffect(() => {}, []);
 
-  //   const isCheckActive = useCallback((href: string) => {
-  //     const hrefTokens = href.substr(1).split('/');
-  //     const pathTokens = router.asPath.substr(1).split('/');
-
-  //     let matched = false;
-  //     for (let i = 0; i < hrefTokens.length; i++) {
-  //         if (hrefTokens[i] === pathTokens[i]) {
-  //         matched = true;
-  //         break;
-  //         }
-  //      }
-
-  //      if ((!fuzzy && router.asPath === href) || (fuzzy && matched)) {
-  //         return true;
-  //       }
-  //   }, [])
+  const navigateLink = useCallback(
+    (link: string) => {
+      setIsOpen(false);
+      router.push(link);
+    },
+    [router, setIsOpen]
+  );
   return (
     <div>
       <main
@@ -47,7 +57,12 @@ const DrawerLeft: NextPage<Props> = ({ isOpen, setIsOpen }: Props) => {
         >
           <article className="relative w-screen max-w-xs pb-10 flex flex-col space-y-6 h-full overflow-scroll-y overflow-y-auto">
             <div className="w-full h-[90px] bg-gray-100 flex justify-start items-center relative px-[30px] flex-shrink-0">
-              <a>Test</a>
+              <Image
+                src={"/images/product/logo/logo_remove_bg.png"}
+                width={220}
+                height={31}
+                alt=""
+              />
               <button
                 className="w-[30px] h-[30px] flex items-center justify-center text-gray-500 absolute right-[25px] focus:outline-none"
                 onClick={() => setIsOpen(false)}
@@ -56,33 +71,17 @@ const DrawerLeft: NextPage<Props> = ({ isOpen, setIsOpen }: Props) => {
               </button>
             </div>
             <div className="flex flex-col py-[60px] pb-[40px] lg:pb-[60px]">
-              <a className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900 font-semibold active">
-                <Link href="/home"> Giới Thiệu</Link>
-              </a>
-              <a
-                className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900"
-                href="/"
-              >
-                <Link href="/product">Sản phẩm</Link>
-              </a>
-              <a
-                className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900"
-                href="https://medsy-classic.vercel.app/"
-              >
-                <Link href="/type"> Nguyên liệu</Link>
-              </a>
-              <a
-                className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900"
-                href="/faq"
-              >
-                <Link href="/info"> Thông tin kĩ thuật</Link>
-              </a>
-              <a
-                className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900"
-                href="/terms"
-              >
-                <Link href="/contact"> Liên hệ</Link>
-              </a>
+              {itemNav.map((item) => {
+                return (
+                  <a
+                    key={item.name}
+                    className="menu-item relative text-gray-900 pl-[30px] pr-4 mb-8 transition duration-300 ease-in-out last:mb-0 hover:text-gray-900 font-semibold active"
+                    onClick={() => navigateLink(item.href)}
+                  >
+                    <Link href={item.href}>{item.name}</Link>
+                  </a>
+                );
+              })}
             </div>
           </article>
         </section>
