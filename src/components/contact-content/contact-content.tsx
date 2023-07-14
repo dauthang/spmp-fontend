@@ -1,9 +1,8 @@
 const ContactContent = () => {
   return (
-    <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+    <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 text-xl">
       <div className="title-area">
         <h2 className="subtitle text-gray">Mua thuốc thủy sản ở đâu?</h2>
-        <div className="separator separator-danger">∎</div>
       </div>
 
       <div className="tab-content">

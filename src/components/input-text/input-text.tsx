@@ -1,13 +1,22 @@
 import { NextPage } from "next";
 import Image from "next/image";
+import { ChangeEvent, useCallback, useState } from "react";
 export interface InputText {
   label?: string;
   placehoder?: string;
   iconSearch?: string;
 }
 
-const InputText: NextPage<InputText> = (props) => {
+const InputText: NextPage<InputText> = (props: {
+  label: string;
+  placehoder: string;
+  iconSearch: string;
+}) => {
   const { label, placehoder, iconSearch } = props;
+  const [value, setValue] = useState("");
+  const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
+  }, []);
   return (
     <div className="w-full ml-[10px] mr-[20px] lg:mr-10 lg:ml-auto lg:flex lg:justify-center">
       <div className="flex items-center justify-center w-full lg:max-w-screen-md rounded relative overflow-hidden">
@@ -18,6 +27,7 @@ const InputText: NextPage<InputText> = (props) => {
           className="w-full h-12 pl-12 px-4 text-gray-900 placeholder-gray-500 bg-grayInput border-2 border-transparent rounded outline-none transition duration-200 hover:border-gray-400 focus:border-black focus:placeholder-gray-900"
           placeholder={placehoder}
           autoComplete="off"
+          onChange={(e) => onChange(e)}
         ></input>
       </div>
     </div>

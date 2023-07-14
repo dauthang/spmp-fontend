@@ -6,8 +6,8 @@ import Footer from "@/components/footer/footer";
 import BackgroundLoading from "@/components/background-loading/background-loading";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Facebook from "@/components/messenger-facebook/messenger-facebook";
 const inter = Inter({ subsets: ["latin"] });
-
 export default function RootLayout({
   children,
 }: {
@@ -17,7 +17,7 @@ export default function RootLayout({
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
-      router.push("/home");
+      // router.push("/home");
       setIsLoading(false);
     }, 2800);
   }, []);
@@ -28,6 +28,7 @@ export default function RootLayout({
           <BackgroundLoading />
         ) : (
           <>
+            <Facebook />
             <Header />
             <div className="flex flex-col w-full h-full min-h-screen flex-grow">
               <div className="pt-[90px] px-3 pb-[50px] flex-auto md:px-[35px]">

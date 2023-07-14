@@ -4,18 +4,18 @@ const ImageBackground = () => {
       <div className="component-overlay"></div>
       <div className="flex flex-col items-center lg:items-start relative z-10 w-full lg:max-w-half pl-[25px] pt-[35px]">
         <h3 className="font-normal text-white text-[36px] mb-6 text-center lg:text-left">
-          Fast, Free Shipping,<br></br>
-          <span className="font-bold">Contactless Delivery.</span>
+          Nhanh chóng, Miễn phí vận chuyển<br></br>
+          <span className="font-bold">Giao hàng không tiếp xúc.</span>
         </h3>
         <p className="text-white text-center lg:text-left mb-10">
-          Try it for now, risk free!
+          Hãy thử ngay bây giờ, không có rủi ro!
         </p>
         <button
           className="flex items-center justify-center flex-shrink-0 font-normal w-auto uppercase rounded outline-none transition duration-250 ease-in-out focus:outline-none text-white bg-gray-900 hover:bg-gray-900 shadow-upside h-11 px-[30px] undefined"
           type="button"
           aria-label="button"
         >
-          <span className="mr-2">Shop Now</span>{" "}
+          <span className="mr-2">Mua ngay</span>{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="13px"
