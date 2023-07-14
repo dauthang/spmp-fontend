@@ -7,11 +7,7 @@ export interface InputText {
   iconSearch?: string;
 }
 
-const InputText: NextPage<InputText> = (props: {
-  label: string;
-  placehoder: string;
-  iconSearch: string;
-}) => {
+const InputText: NextPage<InputText> = (props: InputText) => {
   const { label, placehoder, iconSearch } = props;
   const [value, setValue] = useState("");
   const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
