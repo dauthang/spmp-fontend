@@ -16,7 +16,7 @@ export interface ImgProduct {
 const ListCardClassic = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [imgDetail, setImgDetail] = useState<ImgProduct | undefined>(undefined);
-  const [listImg, setListImg] = useState<ImgProduct[]>(DATA_PRODUCT_FINAL);
+  const [listImg] = useState<ImgProduct[]>(DATA_PRODUCT_FINAL);
   const [isImageReady, setIsImageReady] = useState(false);
 
   const onClickDetailProduct = useCallback(
@@ -29,7 +29,9 @@ const ListCardClassic = () => {
   );
 
   const onLoadCallBack = useCallback(() => {
-    setIsImageReady(true);
+    setTimeout(() => {
+      setIsImageReady(true);
+    }, 1000);
   }, [setIsImageReady]);
 
   return (
