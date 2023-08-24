@@ -28,6 +28,10 @@ const ListCardClassic = () => {
     [listImg]
   );
 
+  useEffect(() => {
+    if (!isOpen) setImgDetail(undefined);
+  }, [isOpen]);
+
   const onLoadCallBack = useCallback(() => {
     setTimeout(() => {
       setIsImageReady(true);
