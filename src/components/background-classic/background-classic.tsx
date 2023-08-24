@@ -18,7 +18,7 @@ const BackgroundClassic = () => {
         />
       </div>
       <button
-        className="flex items-center justify-center flex-shrink-0 absolute top-[25rem] left-[45rem] font-normal w-auto uppercase rounded outline-none transition duration-250 ease-in-out focus:outline-none text-white bg-gray-900 hover:bg-gray-900 shadow-upside h-11 px-[30px] "
+        className="flex items-center justify-center flex-shrink-0 absolute top-[25rem] left-[50%] font-normal w-auto uppercase rounded outline-none transition duration-250 ease-in-out focus:outline-none text-white bg-gray-900 hover:bg-gray-900 shadow-upside h-11 px-[30px] "
         onClick={() => linkProduct()}
       >
         Xem sản phẩm

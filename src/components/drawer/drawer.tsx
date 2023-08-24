@@ -1,15 +1,21 @@
 "use client";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
-import ImageExam from "../../../public/images/product/sanpham/Trang13-anh1.jpg";
 import { ImgProduct } from "../list-card-classic/card-classic";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 export interface Props {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   detail?: ImgProduct | undefined;
 }
 const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, detail }: Props) => {
+  const [isImageReady, setIsImageReady] = useState(false);
+  const onLoadCallBack = useCallback(() => {
+    setIsImageReady(true);
+  }, [setIsImageReady]);
+
   return (
     <div>
       <main
@@ -42,8 +48,22 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, detail }: Props) => {
               <h2 className="font-bold text-[24px] m-0">Details</h2>
             </div>
             <div className="flex items-center justify-center w-full h-[360px] rounded mb-[30px] p-8">
+              {!isImageReady && (
+                <div className="h-[360px] w-full">
+                  <Skeleton className="h-[360px]" />
+                </div>
+              )}
               {detail && detail.srcImg && (
-                <Image className="w-[100%] mt-5" src={detail.srcImg} alt="" />
+                <Image
+                  className={
+                    isImageReady
+                      ? "w-[100%] mt-5  rounded-[10px] visible"
+                      : "invisible absolute"
+                  }
+                  src={detail.srcImg}
+                  alt=""
+                  onLoadingComplete={onLoadCallBack}
+                />
               )}
             </div>
             <div className="flex flex-col p-[30px] pt-8">
