@@ -30,8 +30,9 @@ const InputText: NextPage<InputText> = (props: InputText) => {
     if (isClickOutside) {
       setListFilter([]);
       setValue("");
+      setImgDetail(undefined);
     }
-  }, [isClickOutside, setIsOpen]);
+  }, [isClickOutside, setImgDetail, setIsOpen]);
 
   const onChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +46,6 @@ const InputText: NextPage<InputText> = (props: InputText) => {
             .toUpperCase()
             .includes(event.target.value.toUpperCase())
         );
-        console.log(dataFilter, "dataFilter");
         setListFilter(dataFilter);
       }
     },

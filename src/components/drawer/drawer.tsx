@@ -23,9 +23,7 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, detail }: Props) => {
   }, [isClickOutside, setIsOpen]);
 
   const onLoadCallBack = useCallback(() => {
-    setTimeout(() => {
-      setIsImageReady(true);
-    }, 1000);
+    setIsImageReady(true);
   }, [setIsImageReady]);
 
   return (
@@ -65,7 +63,7 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, detail }: Props) => {
                   <Skeleton className="h-[360px]" />
                 </div>
               )}
-              {detail && detail.srcImg && (
+              {detail?.srcImg && (
                 <Image
                   className={
                     isImageReady
