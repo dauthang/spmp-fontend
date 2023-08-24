@@ -1,5 +1,7 @@
 "use client";
+import { DATA_PRODUCT_FINAL } from "@/constants/data-product-final.const";
 import { DataProduct, DATA_PRODUCT } from "@/constants/data-product.const";
+import { useOutsideAlerter } from "@/hook/click-out-side";
 import Image, { StaticImageData } from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -14,64 +16,8 @@ export interface ImgProduct {
 const ListCardClassic = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [imgDetail, setImgDetail] = useState<ImgProduct | undefined>(undefined);
-  const [listImg, setListImg] = useState<ImgProduct[]>([]);
-  const SRC_BASE = "/images/product/change-bg/";
-  const SRC_REMOVE = "/images/product/sanpham/";
+  const [listImg, setListImg] = useState<ImgProduct[]>(DATA_PRODUCT_FINAL);
   const [isImageReady, setIsImageReady] = useState(false);
-
-  useEffect(() => {
-    let listImg: ImgProduct[] = [];
-    let id = 3;
-    let count = 1;
-
-    for (let i = 1; i <= 32; i++) {
-      if (i === 13) {
-        count = 2;
-        continue;
-      }
-
-      if (i === 14) {
-        count = 1;
-        id++;
-        continue;
-      }
-      if (count === 1) {
-        listImg.push({
-          id: i,
-          srcImgRemoveBg: {
-            src: `${SRC_BASE}Trang${id}-anh${count}.png`,
-            width: 138,
-            height: 138,
-          },
-          srcImg: {
-            src: `${SRC_REMOVE}Trang${id}-anh${count}.jpg`,
-            width: 138,
-            height: 138,
-          },
-          data: DATA_PRODUCT[i - 1],
-        });
-        count = 2;
-      } else {
-        listImg.push({
-          id: i,
-          srcImgRemoveBg: {
-            src: `${SRC_BASE}Trang${id}-anh${count}.png`,
-            width: 138,
-            height: 138,
-          },
-          srcImg: {
-            src: `${SRC_REMOVE}Trang${id}-anh${count}.jpg`,
-            width: 138,
-            height: 138,
-          },
-          data: DATA_PRODUCT[i - 1],
-        });
-        count = 1;
-        id++;
-      }
-    }
-    setListImg(listImg);
-  }, []);
 
   const onClickDetailProduct = useCallback(
     (id: number) => {

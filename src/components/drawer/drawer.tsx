@@ -1,10 +1,11 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 import { ImgProduct } from "../list-card-classic/card-classic";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useOutsideAlerter } from "@/hook/click-out-side";
 export interface Props {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,12 +13,21 @@ export interface Props {
 }
 const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, detail }: Props) => {
   const [isImageReady, setIsImageReady] = useState(false);
+  const wrapperRef = useRef(null);
+  const isClickOutside = useOutsideAlerter(wrapperRef);
+
+  useEffect(() => {
+    if (isClickOutside) {
+      setIsOpen(false);
+    }
+  }, [isClickOutside, setIsOpen]);
+
   const onLoadCallBack = useCallback(() => {
     setIsImageReady(true);
   }, [setIsImageReady]);
 
   return (
-    <div>
+    <div ref={wrapperRef}>
       <main
         className={
           " fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out z-50" +
