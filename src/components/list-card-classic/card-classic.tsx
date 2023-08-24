@@ -2,8 +2,9 @@
 import { DataProduct, DATA_PRODUCT } from "@/constants/data-product.const";
 import Image, { StaticImageData } from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import Drawer from "../drawer/drawer";
-
 export interface ImgProduct {
   id: number;
   srcImg: StaticImageData;
@@ -16,8 +17,9 @@ const ListCardClassic = () => {
   const [listImg, setListImg] = useState<ImgProduct[]>([]);
   const SRC_BASE = "/images/product/change-bg/";
   const SRC_REMOVE = "/images/product/sanpham/";
+  const [isImageReady, setIsImageReady] = useState(false);
+
   useEffect(() => {
-    console.log(DATA_PRODUCT.length);
     let listImg: ImgProduct[] = [];
     let id = 3;
     let count = 1;
@@ -79,6 +81,11 @@ const ListCardClassic = () => {
     },
     [listImg]
   );
+
+  const onLoadCallBack = useCallback(() => {
+    setIsImageReady(true);
+  }, [setIsImageReady]);
+
   return (
     <div className="w-full mt-[35px] xxl:mt-[60px] mb-[35px]">
       <div className="grid grid-cols-1 gap-x-3 gap-y-3 mt-9 md:grid-cols-2 md:gap-x-4 md:gap-y-4 lg:grid-cols-3 xxl:grid-cols-3 xxl:gap-x-4 xxl:gap-y-4 2xxl:grid-cols-4 large:grid-cols-5">
@@ -89,27 +96,45 @@ const ListCardClassic = () => {
               key={item.id}
             >
               <div className="flex flex-row items-start">
-                <div className="flex justify-center items-center w-5/12 xxl:w-4/12 h-auto rounded overflow-hidden bg-[#f4f6f8] flex-shrink-0 mr-4">
+                <div
+                  className={
+                    isImageReady
+                      ? "flex justify-center items-center w-5/12 xxl:w-4/12 h-auto rounded overflow-hidden bg-[#f4f6f8] flex-shrink-0 mr-4"
+                      : "absolute"
+                  }
+                >
                   <Image
+                    className={
+                      isImageReady ? "w-[100$] visible" : "w-[100%] invisible"
+                    }
                     src={item.srcImgRemoveBg}
                     width={138}
                     height={138}
                     alt=""
+                    onLoadingComplete={onLoadCallBack}
                   />
                 </div>
+                {!isImageReady && (
+                  <div className="flex justify-center items-center w-5/12 xxl:w-4/12 h-auto rounded overflow-hidden bg-[#f4f6f8] flex-shrink-0 mr-4">
+                    <div className="w-full">
+                      <Skeleton className="w-full h-[138px]" />
+                    </div>
+                  </div>
+                )}
+
                 <div className="flex flex-col w-full items-start overflow-hidden">
                   <span className="font-semibold text-gray-900 mb-1 text-[16px]">
                     {item.data.nameProduct}
                   </span>
-                  <span className="text-[13px] text-gray-700 truncate w-full">
+                  <span className="text-[13px] text-gray-700 truncate w-full invisible">
                     Trueplus Fibre Food Supplement 90 Tablets
                   </span>
-                  <div className="flex items-center my-1 overflow-hidden w-full">
+                  <div className="flex items-center my-1 overflow-hidden w-full invisible">
                     <span className="text-gray-500 text-[11px] capitalize">
                       Tablet
                     </span>
-                    <span className="flex bg-gray-500 w-[3px[] h-[3px] rounded mx-3 flex-shrink-0"></span>
-                    <span className="text-gray-500 text-[11px] truncate">
+                    <span className="flex bg-gray-500 w-[3px[] h-[3px] rounded mx-3 flex-shrink-0 invisible"></span>
+                    <span className="text-gray-500 text-[11px] truncate invisible">
                       90 Pieces
                     </span>
                   </div>
