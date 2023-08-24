@@ -57,7 +57,7 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, detail }: Props) => {
                 <Image
                   className={
                     isImageReady
-                      ? "w-[100%] mt-5 visible"
+                      ? "w-[100%] mt-5  rounded-[10px] visible"
                       : "invisible absolute"
                   }
                   src={detail.srcImg}
