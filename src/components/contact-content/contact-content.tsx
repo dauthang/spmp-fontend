@@ -18,8 +18,11 @@ const ContactContent = () => {
           - Nhiều dịch vụ tiện ích: Tư vấn miễn phí, giao hàng tận nhà
         </p>
         <p className="text-justify">
-          Liên hệ với <b>sanphamminhphu.com</b> để được tư vấn và đặt mua các
-          loại thuốc thực phẩm chức năng tốt nhất.
+          Liên hệ với{" "}
+          <a href="https://sanphamminhphu.com/" className="text-blue-500">
+            sanphamminhphu.com
+          </a>{" "}
+          để được tư vấn và đặt mua các loại thuốc thực phẩm chức năng tốt nhất.
         </p>
         <p className="text-justify">
           Liên hệ ngay : <a href="tel:0949.509.8888"> 0949.506.888</a>
