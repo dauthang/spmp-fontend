@@ -2,12 +2,14 @@ import {
   DataProductFinal,
   DATA_PRODUCT_FINAL,
 } from "@/constants/data-product-final.const";
-import { DataProduct } from "@/constants/data-product.const";
 import { useOutsideAlerter } from "@/hook/click-out-side";
 import { NextPage } from "next";
 import Image from "next/image";
 import { ChangeEvent, useCallback, useRef, useState, useEffect } from "react";
 import { ImgProduct } from "../list-card-classic/card-classic";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 export interface InputText {
   label?: string;
   placehoder?: string;
@@ -22,6 +24,7 @@ const InputText: NextPage<InputText> = (props: InputText) => {
   const [listFilter, setListFilter] = useState<DataProductFinal[]>([]);
   const wrapperRef = useRef(null);
   const isClickOutside = useOutsideAlerter(wrapperRef);
+  const [isImageReady, setIsImageReady] = useState(false);
 
   useEffect(() => {
     if (isClickOutside) {
@@ -58,6 +61,13 @@ const InputText: NextPage<InputText> = (props: InputText) => {
     },
     [setImgDetail, setIsOpen]
   );
+
+  const onLoadCallBack = useCallback(() => {
+    setTimeout(() => {
+      setIsImageReady(true);
+    }, 1000);
+  }, [setIsImageReady]);
+
   return (
     <div
       className="w-full ml-[10px] mr-[20px] lg:mr-10 lg:ml-auto lg:flex lg:justify-center relative"
@@ -80,19 +90,31 @@ const InputText: NextPage<InputText> = (props: InputText) => {
           {listFilter.map((item: DataProductFinal) => {
             return (
               <>
+                {!isImageReady && (
+                  <div className="h-[50px] mb-2">
+                    <Skeleton className="h-[50px]" />
+                  </div>
+                )}
                 <div
-                  className="flex gap-10 hover:bg-slate-200 items-center p-2 mb-2 cursor-pointer"
+                  className={
+                    isImageReady
+                      ? "flex gap-10 hover:bg-slate-200 items-center p-2 mb-2 cursor-pointer"
+                      : "invisible h-0"
+                  }
                   key={item.id}
                   onClick={() => onClick(item)}
                 >
                   <Image
-                    className="rounded"
+                    className={isImageReady ? "rounded" : "invisible"}
                     src={item.srcImg}
                     width={50}
                     height={50}
                     alt=""
+                    onLoadingComplete={onLoadCallBack}
                   />
-                  <div>{item.data.nameProduct}</div>
+                  <div className={isImageReady ? "" : "invisible"}>
+                    {item.data.nameProduct}
+                  </div>
                 </div>
               </>
             );

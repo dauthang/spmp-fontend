@@ -23,7 +23,9 @@ const Drawer: NextPage<Props> = ({ isOpen, setIsOpen, detail }: Props) => {
   }, [isClickOutside, setIsOpen]);
 
   const onLoadCallBack = useCallback(() => {
-    setIsImageReady(true);
+    setTimeout(() => {
+      setIsImageReady(true);
+    }, 1000);
   }, [setIsImageReady]);
 
   return (
